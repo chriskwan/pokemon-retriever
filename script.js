@@ -26,12 +26,19 @@
         });
     };
 
+    var capitalize = function (word) {
+        if (!word || !word.length) {
+            return "";
+        }
+        return word[0].toUpperCase() + word.slice(1);
+    }
+
     var getPokemon = function (id) {
         var url = pokemonApiBasePath + "/api/v2/pokemon/" + id;
         getUrl(url, function (e) {
             var pokemon = e.currentTarget.response;
             var pokemonNameElement = document.getElementById("pokemon-name");
-            pokemonNameElement.innerText = pokemon.name + " #" + pokemon.id;
+            pokemonNameElement.innerText = capitalize(pokemon.name) + " #" + pokemon.id;
 
             getPokemonSprite(id);
         });
