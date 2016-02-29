@@ -2,6 +2,14 @@
     <head>
     </head>
     <body>
+        <form>
+            <label for="pokemon-number">Number:</label>
+            <input type="text" id="pokemon-number" value="123" />
+            <button type="button" id="go-btn">Go!</button> <!-- need type="button" otherwise it reloads the page on click -->
+        </form>
+        <form>
+            <button id="random-btn">Random!</button>
+        </form>
         <h1 id="pokemon-name"></h1>
         <img id="pokemon-image">
         <script src="script.js"></script>
