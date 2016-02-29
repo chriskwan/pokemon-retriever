@@ -10,6 +10,8 @@
     }
 
     var getPokemonSprite = function (id) {
+        //cwkTODO this might not support all pokemon that v2 api supports
+
         // sprites are not in pokemon api v2 yet:
         // https://github.com/phalt/pokeapi/issues/80
         var url = pokemonApiBasePath + "/api/v1/pokemon/" + id;
@@ -44,12 +46,30 @@
         });
     };
 
+    var getRandomNumberInRangeInclusive = function (min, max) {
+        // Ref: http://stackoverflow.com/a/7228322
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    };
+
+    var getRandomPokemonNumber = function () {
+        // Pokemon API goes from 1 - 721 (Volcanion)
+        //cwkTODO get this programmatically
+        return getRandomNumberInRangeInclusive(1, 721);
+    };
+
     var setupUI = function () {
         var pokemonNumElement = document.getElementById("pokemon-number");
         var goBtn = document.getElementById("go-btn");
+        var randomBtn = document.getElementById("random-btn");
 
         goBtn.onclick = function () {
             getPokemon(pokemonNumElement.value);
+        };
+
+        randomBtn.onclick = function () {
+            var num = getRandomPokemonNumber();
+            pokemonNumElement.value = num;
+            getPokemon(num);
         };
     };
 
