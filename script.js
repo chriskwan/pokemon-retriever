@@ -1,6 +1,10 @@
 (function () {
     var pokemonApiBasePath = "http://pokeapi.co";
 
+    var pokemonNumElement = document.getElementById("pokemon-number");
+    var goBtn = document.getElementById("go-btn");
+    var randomBtn = document.getElementById("random-btn");
+
     var getUrl = function (url, callback) {
         var request = new XMLHttpRequest();
         request.onload = callback;
@@ -33,11 +37,30 @@
             return "";
         }
         return word[0].toUpperCase() + word.slice(1);
-    }
+    };
+
+    var showPokeballAnimation = function () {
+        // Source: http://orig09.deviantart.net/cd96/f/2014/102/8/c/pokeball_wub_by_rockehjamaa-d7e6km8.gif
+        var pokemonImageElement = document.getElementById("pokemon-image");
+        pokemonImageElement.src = "http://orig09.deviantart.net/cd96/f/2014/102/8/c/pokeball_wub_by_rockehjamaa-d7e6km8.gif";
+    };
+
+    var showLoadingTitle = function () {
+        //cwkTODO change so the title only shows up when the image is loaded
+        var pokemonNameElement = document.getElementById("pokemon-name");
+        pokemonNameElement.innerText = "I choose...";
+    };
+
+    var showLoadingAnimation = function () {
+        showLoadingTitle();
+        showPokeballAnimation();
+    };
 
     var getPokemon = function (id) {
         var url = pokemonApiBasePath + "/api/v2/pokemon/" + id;
         getUrl(url, function (e) {
+            showLoadingAnimation();
+
             var pokemon = e.currentTarget.response;
             var pokemonNameElement = document.getElementById("pokemon-name");
             pokemonNameElement.innerText = capitalize(pokemon.name) + " #" + pokemon.id;
@@ -58,10 +81,6 @@
     };
 
     var setupUI = function () {
-        var pokemonNumElement = document.getElementById("pokemon-number");
-        var goBtn = document.getElementById("go-btn");
-        var randomBtn = document.getElementById("random-btn");
-
         goBtn.onclick = function () {
             getPokemon(pokemonNumElement.value);
         };
@@ -74,4 +93,5 @@
     };
 
     setupUI();
+    getPokemon(pokemonNumElement.value);
 })();
