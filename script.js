@@ -61,10 +61,10 @@
     };
 
     var getPokemon = function (id) {
+        showLoadingAnimation();
+
         var url = pokemonApiBasePath + "/api/v2/pokemon/" + id;
         getUrl(url, function (e) {
-            showLoadingAnimation();
-
             var pokemon = e.currentTarget.response;
             pokemonNameElement.innerText = capitalize(pokemon.name) + " #" + pokemon.id;
 
