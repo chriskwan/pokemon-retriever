@@ -27,6 +27,13 @@
                     var sprite = e.currentTarget.response;
                     var pokemonImageElement = document.getElementById("pokemon-image");
                     pokemonImageElement.src = pokemonApiBasePath + sprite.image;
+
+                    //cwkTODO refactor these selectors to just one call
+                    var loadingMessageElement = document.getElementById("loading-message");
+                    loadingMessageElement.style.display = "none";
+
+                    var pokemonNameElement = document.getElementById("pokemon-name");
+                    pokemonNameElement.style.display = "block";
                 });
             }
         });
@@ -46,9 +53,11 @@
     };
 
     var showLoadingTitle = function () {
-        //cwkTODO change so the title only shows up when the image is loaded
+        var loadingMessageElement = document.getElementById("loading-message");
+        loadingMessageElement.style.display = "block";
+
         var pokemonNameElement = document.getElementById("pokemon-name");
-        pokemonNameElement.innerText = "I choose...";
+        pokemonNameElement.style.display = "none";
     };
 
     var showLoadingAnimation = function () {
