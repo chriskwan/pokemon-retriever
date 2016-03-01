@@ -5,6 +5,10 @@
     var goBtn = document.getElementById("go-btn");
     var randomBtn = document.getElementById("random-btn");
 
+    var loadingMessageElement = document.getElementById("loading-message");
+    var pokemonImageElement = document.getElementById("pokemon-image");
+    var pokemonNameElement = document.getElementById("pokemon-name");
+
     var getUrl = function (url, callback) {
         var request = new XMLHttpRequest();
         request.onload = callback;
@@ -25,14 +29,9 @@
                 var spriteUrl = pokemonApiBasePath + pokemon.sprites[0].resource_uri;
                 getUrl(spriteUrl, function (e) {
                     var sprite = e.currentTarget.response;
-                    var pokemonImageElement = document.getElementById("pokemon-image");
                     pokemonImageElement.src = pokemonApiBasePath + sprite.image;
 
-                    //cwkTODO refactor these selectors to just one call
-                    var loadingMessageElement = document.getElementById("loading-message");
                     loadingMessageElement.style.display = "none";
-
-                    var pokemonNameElement = document.getElementById("pokemon-name");
                     pokemonNameElement.style.display = "block";
                 });
             }
@@ -48,15 +47,11 @@
 
     var showPokeballAnimation = function () {
         // Source: http://orig09.deviantart.net/cd96/f/2014/102/8/c/pokeball_wub_by_rockehjamaa-d7e6km8.gif
-        var pokemonImageElement = document.getElementById("pokemon-image");
         pokemonImageElement.src = "http://orig09.deviantart.net/cd96/f/2014/102/8/c/pokeball_wub_by_rockehjamaa-d7e6km8.gif";
     };
 
     var showLoadingTitle = function () {
-        var loadingMessageElement = document.getElementById("loading-message");
         loadingMessageElement.style.display = "block";
-
-        var pokemonNameElement = document.getElementById("pokemon-name");
         pokemonNameElement.style.display = "none";
     };
 
@@ -71,7 +66,6 @@
             showLoadingAnimation();
 
             var pokemon = e.currentTarget.response;
-            var pokemonNameElement = document.getElementById("pokemon-name");
             pokemonNameElement.innerText = capitalize(pokemon.name) + " #" + pokemon.id;
 
             getPokemonSprite(id);
