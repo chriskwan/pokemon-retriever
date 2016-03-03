@@ -58,11 +58,18 @@
         showPokeballAnimation();
     };
 
-    var getPokemon = function (id) {
+    var updatePokemonName = function (pokemon) {
+        pokemonNameElement.innerText = capitalize(pokemon.name) + " #" + pokemon.id;
+    };
+
+    var getPokemon = function (id, callback) {
         var url = pokemonApiBasePath + "/api/v2/pokemon/" + id;
         getUrl(url, function (e) {
             var pokemon = e.currentTarget.response;
-            pokemonNameElement.innerText = capitalize(pokemon.name) + " #" + pokemon.id;
+
+            if (callback) {
+                callback(pokemon);
+            }
 
             getPokemonSprite(id);
         });
@@ -83,7 +90,7 @@
         goBtn.onclick = function () {
             showLoadingAnimation();
 
-            getPokemon(pokemonNumElement.value);
+            getPokemon(pokemonNumElement.value, updatePokemonName);
         };
 
         randomBtn.onclick = function () {
@@ -92,10 +99,13 @@
             //cwkTODO move random code to random-pokemon too
             var num = getRandomPokemonNumber();
             pokemonNumElement.value = num;
-            getPokemon(num);
+            getPokemon(num, updatePokemonName);
         };
     };
 
     setupUI();
-    getPokemon(pokemonNumElement.value);
+
+    showLoadingAnimation();
+
+    getPokemon(pokemonNumElement.value, updatePokemonName);
 })();
