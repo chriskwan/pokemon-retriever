@@ -93,26 +93,25 @@
         return getRandomNumberInRangeInclusive(1, 721);
     };
 
+    var getPokemonAndUpdateUI = function (number) {
+        showLoadingAnimation();
+        getPokemon(number, updatePokemonName, updatePokemonImage);
+    };
+
     var setupUI = function () {
         goBtn.onclick = function () {
-            showLoadingAnimation();
-
-            getPokemon(pokemonNumElement.value, updatePokemonName, updatePokemonImage);
+            getPokemonAndUpdateUI(pokemonNumElement.value);
         };
 
         randomBtn.onclick = function () {
-            showLoadingAnimation();
-
             //cwkTODO move random code to random-pokemon too
             var num = getRandomPokemonNumber();
             pokemonNumElement.value = num;
-            getPokemon(num, updatePokemonName, updatePokemonImage);
+            getPokemonAndUpdateUI(num);
         };
     };
 
     setupUI();
 
-    showLoadingAnimation();
-
-    getPokemon(pokemonNumElement.value, updatePokemonName, updatePokemonImage);
+    getPokemonAndUpdateUI(pokemonNumElement.value);
 })();
