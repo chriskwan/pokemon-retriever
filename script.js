@@ -18,9 +18,7 @@
     }
 
     var getPokemonSprite = function (id) {
-        //cwkTODO this might not support all pokemon that v2 api supports
-
-        // sprites are not in pokemon api v2 yet:
+        //cwkTODO update this to v2 now that sprites are supported!
         // https://github.com/phalt/pokeapi/issues/80
         var url = pokemonApiBasePath + "/api/v1/pokemon/" + id;
         getUrl(url, function (e) {
@@ -61,8 +59,6 @@
     };
 
     var getPokemon = function (id) {
-        showLoadingAnimation();
-
         var url = pokemonApiBasePath + "/api/v2/pokemon/" + id;
         getUrl(url, function (e) {
             var pokemon = e.currentTarget.response;
@@ -85,10 +81,15 @@
 
     var setupUI = function () {
         goBtn.onclick = function () {
+            showLoadingAnimation();
+
             getPokemon(pokemonNumElement.value);
         };
 
         randomBtn.onclick = function () {
+            showLoadingAnimation();
+
+            //cwkTODO move random code to random-pokemon too
             var num = getRandomPokemonNumber();
             pokemonNumElement.value = num;
             getPokemon(num);
