@@ -17,7 +17,14 @@
         request.send();
     }
 
-    var getPokemonSprite = function (id) {
+    var updatePokemonImage = function (pokemonSpriteUrl) {
+        pokemonImageElement.src = pokemonSpriteUrl;
+
+        loadingMessageElement.style.display = "none";
+        pokemonNameElement.style.display = "block";
+    };
+
+    var getPokemonSprite = function (id, callback) {
         //cwkTODO update this to v2 now that sprites are supported!
         // https://github.com/phalt/pokeapi/issues/80
         var url = pokemonApiBasePath + "/api/v1/pokemon/" + id;
@@ -27,10 +34,10 @@
                 var spriteUrl = pokemonApiBasePath + pokemon.sprites[0].resource_uri;
                 getUrl(spriteUrl, function (e) {
                     var sprite = e.currentTarget.response;
-                    pokemonImageElement.src = pokemonApiBasePath + sprite.image;
 
-                    loadingMessageElement.style.display = "none";
-                    pokemonNameElement.style.display = "block";
+                    if (callback) {
+                        callback(pokemonApiBasePath + sprite.image);
+                    }
                 });
             }
         });
@@ -62,7 +69,7 @@
         pokemonNameElement.innerText = capitalize(pokemon.name) + " #" + pokemon.id;
     };
 
-    var getPokemon = function (id, callback) {
+    var getPokemon = function (id, callback, spriteCallback) {
         var url = pokemonApiBasePath + "/api/v2/pokemon/" + id;
         getUrl(url, function (e) {
             var pokemon = e.currentTarget.response;
@@ -71,7 +78,7 @@
                 callback(pokemon);
             }
 
-            getPokemonSprite(id);
+            getPokemonSprite(id, spriteCallback);
         });
     };
 
@@ -90,7 +97,7 @@
         goBtn.onclick = function () {
             showLoadingAnimation();
 
-            getPokemon(pokemonNumElement.value, updatePokemonName);
+            getPokemon(pokemonNumElement.value, updatePokemonName, updatePokemonImage);
         };
 
         randomBtn.onclick = function () {
@@ -99,7 +106,7 @@
             //cwkTODO move random code to random-pokemon too
             var num = getRandomPokemonNumber();
             pokemonNumElement.value = num;
-            getPokemon(num, updatePokemonName);
+            getPokemon(num, updatePokemonName, updatePokemonImage);
         };
     };
 
@@ -107,5 +114,5 @@
 
     showLoadingAnimation();
 
-    getPokemon(pokemonNumElement.value, updatePokemonName);
+    getPokemon(pokemonNumElement.value, updatePokemonName, updatePokemonImage);
 })();
