@@ -42,7 +42,14 @@
     };
 
     var updatePokemonName = function (pokemon) {
-        var pokemonName = capitalize(pokemon.name) + " #" + pokemon.id;
+        var pokemonName;
+
+        if ( !pokemon || !pokemon.name || (pokemon.detail && pokemon.detail === "Not found.") ) {
+            pokemonName = "MissingNo.";
+        } else {
+            pokemonName = capitalize(pokemon.name) + " #" + pokemon.id;
+        }
+
         pokemonNameElement.innerText = pokemonName;
         lastPokemonName = pokemonName;
     };
