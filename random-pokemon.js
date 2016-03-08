@@ -1,6 +1,6 @@
 //cwkTODO move this code to random-pokemon package
 (function () {
-    var pokemonApiBasePath = "http://pokeapi.co";
+    var pokemonApiBasePath = "https://pokeapi.co";
 
     var getUrl = function (url, callback) {
             var request = new XMLHttpRequest();
