@@ -29,7 +29,7 @@
             } else {
                 if (callback) {
                     // Ref: http://cdn.bulbagarden.net/upload/9/98/Missingno_RB.png
-                    callback("/missingno.png");
+                    callback("./missingno.png");
                 }
             }
         });
