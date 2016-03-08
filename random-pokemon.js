@@ -1,6 +1,6 @@
 //cwkTODO move this code to random-pokemon package
 (function () {
-    var pokemonApiBasePath = "http://pokeapi.co";
+    var pokemonApiBasePath = "https://pokeapi.co";
 
     var getUrl = function (url, callback) {
             var request = new XMLHttpRequest();
@@ -16,7 +16,8 @@
         var url = pokemonApiBasePath + "/api/v1/pokemon/" + id;
         getUrl(url, function (e) {
             var pokemon = e.currentTarget.response;
-            if (pokemon.sprites && pokemon.sprites.length) {
+
+            if (pokemon && pokemon.sprites && pokemon.sprites.length) {
                 var spriteUrl = pokemonApiBasePath + pokemon.sprites[0].resource_uri;
                 getUrl(spriteUrl, function (e) {
                     var sprite = e.currentTarget.response;
@@ -25,6 +26,11 @@
                         callback(pokemonApiBasePath + sprite.image);
                     }
                 });
+            } else {
+                if (callback) {
+                    // Ref: http://cdn.bulbagarden.net/upload/9/98/Missingno_RB.png
+                    callback("/missingno.png");
+                }
             }
         });
     };
