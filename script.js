@@ -1,7 +1,7 @@
 (function () {
     var pokemonNumElement = document.getElementById("pokemon-number");
-    var goBtn = document.getElementById("go-btn");
     var randomBtn = document.getElementById("random-btn");
+    var pokemonFormElement = document.getElementById("pokemon-form");
 
     var loadingMessageElement = document.getElementById("loading-message");
     var pokemonImageElement = document.getElementById("pokemon-image");
@@ -84,8 +84,11 @@
     };
 
     var setupUI = function () {
-        goBtn.onclick = function () {
+        pokemonNumElement.focus();
+
+        pokemonFormElement.onsubmit = function () {
             getPokemonAndUpdateUI(pokemonNumElement.value);
+            return false;
         };
 
         randomBtn.onclick = function () {
