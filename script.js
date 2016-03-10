@@ -1,5 +1,5 @@
 (function () {
-    var pokemonNumElement = document.getElementById("pokemon-number");
+    var pokemonNumOrNameElement = document.getElementById("pokemon-number-or-name");
     var randomBtn = document.getElementById("random-btn");
     var pokemonFormElement = document.getElementById("pokemon-form");
 
@@ -75,30 +75,30 @@
         }
     };
 
-    var getPokemonAndUpdateUI = function (number) {
+    var getPokemonAndUpdateUI = function (numberOrName) {
         showLoadingAnimation();
 
         storeLastPokemon();
 
-        randomPokemon.getPokemon(number, updatePokemonName, updatePokemonImage);
+        randomPokemon.getPokemon(numberOrName, updatePokemonName, updatePokemonImage);
     };
 
     var setupUI = function () {
-        pokemonNumElement.focus();
+        pokemonNumOrNameElement.focus();
 
         pokemonFormElement.onsubmit = function () {
-            getPokemonAndUpdateUI(pokemonNumElement.value);
+            getPokemonAndUpdateUI(pokemonNumOrNameElement.value);
             return false;
         };
 
         randomBtn.onclick = function () {
             var num = randomPokemon.getRandomPokemonNumber();
-            pokemonNumElement.value = num;
+            pokemonNumOrNameElement.value = num;
             getPokemonAndUpdateUI(num);
         };
     };
 
     setupUI();
 
-    getPokemonAndUpdateUI(pokemonNumElement.value);
+    getPokemonAndUpdateUI(pokemonNumOrNameElement.value);
 })();
