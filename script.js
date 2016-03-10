@@ -84,6 +84,8 @@
     };
 
     var setupUI = function () {
+        pokemonNumElement.focus();
+
         pokemonFormElement.onsubmit = function () {
             getPokemonAndUpdateUI(pokemonNumElement.value);
             return false;
