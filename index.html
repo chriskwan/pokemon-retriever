@@ -3,12 +3,12 @@
     </head>
     <body>
         <h1>Pokemon Retriever</h1>
-        <form>
+        <form id="pokemon-form">
             <label for="pokemon-number">Number:</label>
-            <input type="text" id="pokemon-number" value="123" />
-            <button type="button" id="go-btn">Go!</button> <!-- need type="button" otherwise it reloads the page on click -->
+            <input type="text" id="pokemon-number" value="123" /> <!-- Scyther is the best Pokemon -->
+            <button type="submit">Go!</button>
             <br />
-            <button type="button" id="random-btn">Random!</button>
+            <button type="button" id="random-btn">Random!</button> <!-- need type="button" otherwise it reloads the page on click -->
         </form>
         <h3 id="loading-message" style="display:none">I Choose...</h3>
         <h3 id="pokemon-name" style="display:none"></h3>
