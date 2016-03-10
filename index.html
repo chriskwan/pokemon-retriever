@@ -4,10 +4,11 @@
     <body>
         <h1>Pokemon Retriever</h1>
         <form id="pokemon-form">
-            <label for="pokemon-number-or-name">Number:</label>
-            <input type="text" id="pokemon-number-or-name" value="123" /> <!-- Scyther is the best Pokemon --> <!-- Name also work here -->
-            <button type="submit">Go!</button>
+            <label for="pokemon-number-or-name">Pokemon Name or Number:</label>
+            (e.g. <em>scyther</em> or <em>123</em>)
             <br />
+            <input type="text" id="pokemon-number-or-name" value="scyther" /> <!-- Scyther is the best Pokemon --> <!-- Name also work here -->
+            <button type="submit">Go!</button>
             <button type="button" id="random-btn">Random!</button> <!-- need type="button" otherwise it reloads the page on click -->
         </form>
         <h3 id="loading-message" style="display:none">I Choose...</h3>

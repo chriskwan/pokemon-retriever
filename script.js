@@ -83,11 +83,23 @@
         randomPokemon.getPokemon(numberOrName, updatePokemonName, updatePokemonImage);
     };
 
+    var getPokemonNumOrName = function () {
+        var numOrName = pokemonNumOrNameElement.value;
+        
+        // names need to be all lowercase for api
+        if (isNaN(numOrName)) {
+            numOrName = numOrName.toLowerCase();
+        }
+
+        return numOrName;
+    };
+
     var setupUI = function () {
         pokemonNumOrNameElement.focus();
 
         pokemonFormElement.onsubmit = function () {
-            getPokemonAndUpdateUI(pokemonNumOrNameElement.value);
+            var numOrName = getPokemonNumOrName();
+            getPokemonAndUpdateUI(numOrName);
             return false;
         };
 
@@ -100,5 +112,6 @@
 
     setupUI();
 
-    getPokemonAndUpdateUI(pokemonNumOrNameElement.value);
+    var numOrName = getPokemonNumOrName();
+    getPokemonAndUpdateUI(numOrName);
 })();
