@@ -41,17 +41,18 @@
 <!-- Begin Pokemon Code -->
         <h1>Pokemon Retriever</h1>
         <form id="pokemon-form">
-            <label for="pokemon-number">Number:</label>
-            <input type="text" id="pokemon-number" value="123" /> <!-- Scyther is the best Pokemon -->
-            <button type="submit">Go!</button>
+            <label for="pokemon-number-or-name">Pokemon Name or Number:</label>
+            (e.g. <em>scyther</em> or <em>123</em>)
             <br />
+            <input type="text" id="pokemon-number-or-name" value="scyther" /> <!-- Scyther is the best Pokemon --> <!-- Name also work here -->
+            <button type="submit">Go!</button>
             <button type="button" id="random-btn">Random!</button> <!-- need type="button" otherwise it reloads the page on click -->
         </form>
         <h3 id="loading-message" style="display:none">I Choose...</h3>
         <h3 id="pokemon-name" style="display:none"></h3>
         <img id="pokemon-image">
 
-        <h2>My PC:</h2>
+        <h2>History:</h2>
         <div id="pokemon-history"></div>
 
         <script src="random-pokemon.js"></script> <!-- cwkTODO get this from random-pokemon package -->
