@@ -10,7 +10,21 @@
             request.send();
     };
 
+    var getPokemonAnimatedSprite = function (pokemonName) {
+        var url = "https://www.smogon.com/dex/media/sprites/xy/" + pokemonName + ".gif";
+        //cwkTODO how to check if image does not exist?
+        return url;
+    };
+
+    //cwkTODO rename id
     var getPokemonSprite = function (id, callback) {
+
+        var animatedSpriteUrl = getPokemonAnimatedSprite(id);
+        if (callback) {
+            callback(animatedSpriteUrl);
+            return; //cwkTODO instead of doing this, only return if the url is valid
+        }
+
         //cwkTODO update this to v2 now that sprites are supported!
         // https://github.com/phalt/pokeapi/issues/80
         var url = pokemonApiBasePath + "/api/v1/pokemon/" + id;
@@ -50,7 +64,7 @@
                     callback(pokemon);
                 }
 
-                getPokemonSprite(id, spriteCallback);
+                getPokemonSprite(pokemon.name, spriteCallback);
             });
         },
 
