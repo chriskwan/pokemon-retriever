@@ -16,10 +16,9 @@
         return url;
     };
 
-    //cwkTODO rename id
-    var getPokemonSprite = function (id, callback) {
+    var getPokemonSprite = function (pokemonName, callback) {
 
-        var animatedSpriteUrl = getPokemonAnimatedSprite(id);
+        var animatedSpriteUrl = getPokemonAnimatedSprite(pokemonName);
         if (callback) {
             callback(animatedSpriteUrl);
             return; //cwkTODO instead of doing this, only return if the url is valid
@@ -27,7 +26,7 @@
 
         //cwkTODO update this to v2 now that sprites are supported!
         // https://github.com/phalt/pokeapi/issues/80
-        var url = pokemonApiBasePath + "/api/v1/pokemon/" + id;
+        var url = pokemonApiBasePath + "/api/v1/pokemon/" + pokemonName;
         getUrl(url, function (e) {
             var pokemon = e.currentTarget.response;
 
