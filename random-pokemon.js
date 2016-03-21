@@ -1,5 +1,9 @@
 //cwkTODO move this code to random-pokemon package
 (function () {
+    //cwkTODO generate a pokemon number to name dictionary
+    //cwkTODO generate a pokemon name to number dictionary
+    //cwkTODO or have two dictionaries that reference the same objects
+
     var pokemonApiBasePath = "https://pokeapi.co";
 
     var getUrl = function (url, callback) {
@@ -11,13 +15,17 @@
     };
 
     var getPokemonAnimatedSprite = function (pokemonName) {
+        //cwkTODO change to passing in pokemon Number and grabbing name for dictionary
+        //cwkTODO or wrap a pokemon object that has both
         var url = "https://www.smogon.com/dex/media/sprites/xy/" + pokemonName + ".gif";
         //cwkTODO how to check if image does not exist?
         return url;
     };
 
+    //cwkTODO change to passing in the pokemonNumber
     var getPokemonSprite = function (pokemonName, callback) {
 
+        //cwkTODO change to passing in pokemonNumber
         var animatedSpriteUrl = getPokemonAnimatedSprite(pokemonName);
         if (callback) {
             callback(animatedSpriteUrl);

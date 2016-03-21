@@ -83,14 +83,17 @@
         randomPokemon.getPokemon(numberOrName, updatePokemonName, updatePokemonImage);
     };
 
+    //cwkTODO change to getPokemonNumber
     var getPokemonNumOrName = function () {
         var numOrName = pokemonNumOrNameElement.value;
         
         // names need to be all lowercase for api
         if (isNaN(numOrName)) {
+            //cwkTODO change to checking dictionary for the name
             numOrName = numOrName.toLowerCase();
         }
 
+        //cwkTODO change to returning the number
         return numOrName;
     };
 
