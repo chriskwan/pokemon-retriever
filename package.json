@@ -1,0 +1,27 @@
+{
+  "name": "pokemon-retriever",
+  "version": "1.0.0",
+  "description": "Retrieve a Pokemon",
+  "main": "script.js",
+  "dependencies": {
+    "pokemon-util": "^0.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chriskwan/pokemon-retriever.git"
+  },
+  "keywords": [
+    "pokemon",
+    "retriever"
+  ],
+  "author": "Chris Kwan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chriskwan/pokemon-retriever/issues"
+  },
+  "homepage": "https://github.com/chriskwan/pokemon-retriever#readme"
+}
