@@ -170,9 +170,19 @@
 
 /***/ },
 /* 1 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	/******/ (function(modules) { // webpackBootstrap
+	(function webpackUniversalModuleDefinition(root, factory) {
+		if(true)
+			module.exports = factory();
+		else if(typeof define === 'function' && define.amd)
+			define("pokemon-util", [], factory);
+		else if(typeof exports === 'object')
+			exports["pokemon-util"] = factory();
+		else
+			root["pokemon-util"] = factory();
+	})(this, function() {
+	return /******/ (function(modules) { // webpackBootstrap
 	/******/ 	// The module cache
 	/******/ 	var installedModules = {};
 
@@ -284,31 +294,32 @@
 		    return Math.floor(Math.random() * (max - min + 1) + min);
 		};
 
-		var randomPokemon = {
-		    getPokemon: function getPokemon(id, callback, spriteCallback) {
-		        var url = pokemonApiBasePath + "/api/v2/pokemon/" + id;
-		        getUrl(url, function (e) {
-		            var pokemon = e.currentTarget.response;
+		var getPokemon = function getPokemon(id, callback, spriteCallback) {
+		    var url = pokemonApiBasePath + "/api/v2/pokemon/" + id;
+		    getUrl(url, function (e) {
+		        var pokemon = e.currentTarget.response;
 
-		            if (callback) {
-		                callback(pokemon);
-		            }
+		        if (callback) {
+		            callback(pokemon);
+		        }
 
-		            getPokemonSprite(pokemon.name, spriteCallback);
-		        });
-		    },
-
-		    getRandomPokemonNumber: function getRandomPokemonNumber() {
-		        // Pokemon API goes from 1 - 721 (Volcanion)
-		        //cwkTODO get this programmatically
-		        return getRandomNumberInRangeInclusive(1, 721);
-		    }
+		        getPokemonSprite(pokemon.name, spriteCallback);
+		    });
 		};
 
-		exports.default = randomPokemon;
+		var getRandomPokemonNumber = function getRandomPokemonNumber() {
+		    // Pokemon API goes from 1 - 721 (Volcanion)
+		    //cwkTODO get this programmatically
+		    return getRandomNumberInRangeInclusive(1, 721);
+		};
+
+		exports.getPokemon = getPokemon;
+		exports.getRandomPokemonNumber = getRandomPokemonNumber;
 
 	/***/ }
-	/******/ ]);
+	/******/ ])
+	});
+	;
 
 /***/ }
 /******/ ]);
