@@ -4,7 +4,7 @@
   "description": "Retrieve a Pokemon",
   "main": "script.js",
   "dependencies": {
-    "pokemon-util": "^0.0.4"
+    "pokemon-util": "^0.0.5"
   },
   "devDependencies": {
     "webpack": "^1.12.14"
