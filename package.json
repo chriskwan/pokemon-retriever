@@ -6,8 +6,11 @@
   "dependencies": {
     "pokemon-util": "^0.0.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "webpack": "^1.12.14"
+  },
   "scripts": {
+    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

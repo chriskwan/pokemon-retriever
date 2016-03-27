@@ -1,4 +1,6 @@
 (function () {
+    var randomPokemon = require("pokemon-util");
+
     var pokemonNumOrNameElement = document.getElementById("pokemon-number-or-name");
     var randomBtn = document.getElementById("random-btn");
     var pokemonFormElement = document.getElementById("pokemon-form");
