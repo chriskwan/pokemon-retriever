@@ -1,4 +1,4 @@
 # pokemon-retriever
-Retrieve a Pokémon (example app for [`random-pokemon`](https://github.com/chriskwan/random-pokemon) package)
+Retrieve a Pokémon (example app for the [`pokemon-util`](https://github.com/chriskwan/pokemon-util) package)
 
 [Demo](http://chriskwan.github.io/pokemon-retriever)
