@@ -247,10 +247,22 @@
 		    request.send();
 		};
 		
+		// Ref: http://benmccormick.org/2015/12/30/es6-patterns-converting-callbacks-to-promises/
+		var fetch = function fetch(url) {
+		    var options = arguments.length <= 1 || arguments[1] === undefined ? { method: "GET" } : arguments[1];
+		    return new Promise(function (resolve, reject) {
+		        var request = new XMLHttpRequest();
+		        request.onload = resolve;
+		        request.onerror = reject;
+		        request.open(options.method, url, true);
+		        request.send();
+		    });
+		};
+		
 		var getPokemonAnimatedSprite = function getPokemonAnimatedSprite(pokemonName) {
 		    //cwkTODO change to passing in pokemon Number and grabbing name for dictionary
 		    //cwkTODO or wrap a pokemon object that has both
-		    var url = "https://www.smogon.com/dex/media/sprites/xy/" + pokemonName + ".gif";
+		    var url = "http://www.smogon.com/dex/media/sprites/xy/" + pokemonName + ".gif";
 		    //cwkTODO how to check if image does not exist?
 		    return url;
 		};
